@@ -20,7 +20,7 @@
 
 title: Haosong Liu's  Blog
 email: louisliu960115@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: # this means to ignore newlines until "baseurl:"
 M.S. Electrical and Computer Engineering <br/>
 @University of Miami <br/>
 B.S. Material Science <br/>
