@@ -24,6 +24,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: Haosong Liu
 github_username:  Haosong Liu
+description: M.S. Electrical and Computer Engineering<br/> @University of Miami<br/> B.S. Material Science and Engineering<br/>@University of Minnesota<br/> B.S. Polymer Science and Engineering<br/>@Sichuan Univeristy
 
 # Build settings
 theme: minima
