@@ -20,13 +20,6 @@
 
 title: Haosong Liu's  Blog
 email: louisliu960115@gmail.com
-description: # this means to ignore newlines until "baseurl:"
-M.S. Electrical and Computer Engineering <br/>
-@University of Miami <br/>
-B.S. Material Science <br/>
-@University of Minnesota <br/>
-B.S. Polymer Science <br/>
-@Sichuan University
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: Haosong Liu
