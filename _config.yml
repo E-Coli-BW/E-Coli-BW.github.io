@@ -30,6 +30,7 @@ linkedin_username: haosong-liu-512bb0126
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 markdown: kramdown
 encoding: utf-8
 # Exclude from processing.
