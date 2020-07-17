@@ -2,7 +2,7 @@
 layout: post
 title:  "first attempt using jekyll"
 date:   2020-07-17 00:15:07 -0400
-categories: jekyll blog
+categories: RandomStuff
 ---
 
 First time ever setting up personal blog for showcasing my resume. Also serve as a public "notebook" to let me jot down some random stuff (process of setting up environment, some weird bugs I encountered, some random thoughts, material science jokes etc).

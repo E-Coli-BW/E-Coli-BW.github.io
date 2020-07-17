@@ -23,7 +23,7 @@ email: louisliu960115@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   M.S in ECE from U of Miami, B.S. in Material Science from UMN. Classical Music and Software Engineering Lover
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://e-coli-bw.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  E-Coli-BW
 linkedin_username: haosong-liu-512bb0126
 # Build settings
@@ -33,6 +33,9 @@ plugins:
   - jekyll-seo-tag
 markdown: kramdown
 encoding: utf-8
+name: Haosong Liu
+permalink: /:categories/:title/
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

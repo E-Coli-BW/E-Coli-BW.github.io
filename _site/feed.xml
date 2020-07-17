@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-17T13:57:07-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Haosong Liu</title><subtitle>M.S in ECE from U of Miami, B.S. in Material Science from UMN. Classical Music and Software Engineering Lover</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/07/17/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-07-17T00:15:07-04:00</published><updated>2020-07-17T00:15:07-04:00</updated><id>http://localhost:4000/jekyll/update/2020/07/17/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/07/17/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Haosong Liu</title>
+    <description>M.S in ECE from U of Miami, B.S. in Material Science from UMN. Classical Music and Software Engineering Lover</description>
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 
@@ -14,10 +24,37 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">first attempt using jekyll</title><link href="http://localhost:4000/jekyll/blog/2020/07/17/first-attempt-using-jekyll.html" rel="alternate" type="text/html" title="first attempt using jekyll" /><published>2020-07-17T00:15:07-04:00</published><updated>2020-07-17T00:15:07-04:00</updated><id>http://localhost:4000/jekyll/blog/2020/07/17/first-attempt-using-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/blog/2020/07/17/first-attempt-using-jekyll.html">&lt;p&gt;First time ever setting up personal blog for showcasing my resume. Also serve as a public “notebook” to let me jot down some random stuff (process of setting up environment, some weird bugs I encountered, some random thoughts, material science jokes etc).&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//randomstuff/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000//randomstuff/welcome-to-jekyll/</guid>
+      </item>
+    
+      <item>
+        <title>Test Categories Functionality</title>
+        <description>&lt;p&gt;This is just a test for displaying user defined categories for posts&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//functionaltest/test-categories/</link>
+        <guid isPermaLink="true">http://localhost:4000//functionaltest/test-categories/</guid>
+      </item>
+    
+      <item>
+        <title>first attempt using jekyll</title>
+        <description>&lt;p&gt;First time ever setting up personal blog for showcasing my resume. Also serve as a public “notebook” to let me jot down some random stuff (process of setting up environment, some weird bugs I encountered, some random thoughts, material science jokes etc).&lt;/p&gt;
 
 &lt;p&gt;At the moment, I’m still a newbie to jekyll. Took me a whole lot of effort to just tweak the site a little bit. Although right now, it’s good enough for me. I got the site up and running. Can do some simple blogging, can showcase my resume and that’s pretty much everything I need for now.&lt;/p&gt;
 
 &lt;p&gt;I will keep learning jekyll in hope to add some customize features to my site. The most urgent one right now is to add clickable tags for each blog and a tag cloud on the index page. So far, I still cannot figure out how to do that even after following a blogger’s tutorial. Guess it’s because I’m still quite confused about the overall structure of jekyll. It is very elegant and easy to use, but at the moment, I find it also emposes a lot of weird overhead and the documentation sometimes a bit confusing.&lt;/p&gt;
 
-&lt;p&gt;But anyway, I will keep researching about this and try to really master it to make my site a easy to use static blog for myself.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="blog" /><summary type="html">First time ever setting up personal blog for showcasing my resume. Also serve as a public “notebook” to let me jot down some random stuff (process of setting up environment, some weird bugs I encountered, some random thoughts, material science jokes etc).</summary></entry></feed>
+&lt;p&gt;But anyway, I will keep researching about this and try to really master it to make my site a easy to use static blog for myself.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//randomstuff/first-attempt-using-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000//randomstuff/first-attempt-using-jekyll/</guid>
+      </item>
+    
+  </channel>
+</rss>
