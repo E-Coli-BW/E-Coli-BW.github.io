@@ -42,6 +42,118 @@
       </item>
     
       <item>
+        <title>Some Notes on Several Concepts I always feel vague about</title>
+        <description>&lt;h1 id=&quot;programming-wise-concepts&quot;&gt;Programming-wise concepts&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Thread vs Process vs Coroutines&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Coroutine: sequential processing. one task gets executed at any given moment&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Threads: concurrent processes, multiple threads may be running at any given moment. (Note: single core can also do multithreading via slicing)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Process: Both processes and threads are independent sequences of execution. However, thread &lt;strong&gt;shares&lt;/strong&gt; memory space, process runs in &lt;strong&gt;seperate&lt;/strong&gt; memory spaces&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Key difference between Coroutine and Thread&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;Coroutine switches context &lt;strong&gt;cooperatively&lt;/strong&gt; meaning the &lt;strong&gt;programmer/programming language/runtime&lt;/strong&gt; controls when a switch happens.&lt;/p&gt;
+
+&lt;p&gt;Thread swtiches context preemptively, meaning &lt;strong&gt;kernel&lt;/strong&gt; is scheduling(controls) the context-switching&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Some examples&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;Cotoutine: C# task, Python generator i.e: programmers can control when an object stops running and handle the control to sth else. OS kernels &lt;strong&gt;does not&lt;/strong&gt; involve in this context-swithing/scheduling&lt;/p&gt;
+
+&lt;p&gt;Thread: Java multi-thread programming API, you can control thread on high level but the actual context-switching is done by the kernel&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why coroutine if we already have thread?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;see &lt;a href=&quot;https://stackoverflow.com/questions/1934715/difference-between-a-coroutine-and-a-thread&quot;&gt;here&lt;/a&gt;, short answer: co-routines have less overhead than thread due to the fact that co-routine don’t need kernel scheduler to work.&lt;/p&gt;
+
+&lt;p&gt;ref: 
+1) &lt;a href=&quot;https://stackoverflow.com/questions/1934715/difference-between-a-coroutine-and-a-thread&quot;&gt;StackOverflow: Difference between a coroutine and a thread&lt;/a&gt;
+2) &lt;a href=&quot;https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread&quot;&gt;StackOverflow: What is the difference between a process and a thread?&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Concurrency vs Parallelization&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Concurrency means two or more tasks start, run, and complete in overlapping time periods. It may &lt;strong&gt;NOT necessarily&lt;/strong&gt; be running at the same time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;e.g: multi-tasking on a single-core&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Parallelization means tasks are really running at the same time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;e.g.: multi-tasking on a multi-core(if well programmed so parallelization can actually take place on difference cores)&lt;/p&gt;
+
+&lt;p&gt;ref: &lt;a href=&quot;https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism&quot;&gt;stackoverflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Some examples of Multi-thread, Multi-process, Coroutines&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;multi-thread: Spark&lt;/li&gt;
+  &lt;li&gt;multi-process: Hadoop&lt;/li&gt;
+  &lt;li&gt;coroutines: C# tasks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;some-follow-up-on-previous-section&quot;&gt;Some follow up on previous section&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Coroutine vs Asynchrounous pattern?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Particularly in JavaScript we have callback/Promise/Async Await which all boils down to Asynchrounous programming.&lt;/p&gt;
+
+&lt;p&gt;Asynchrounous basically means during the flow of execution, you can pause some of the code block and wait for it to continue running from where it has been left off when a specific event happens(that triggers the callback function to run)&lt;/p&gt;
+
+&lt;p&gt;Coroutine is more of a threading thing and **Threading is about workers; asynchrony is about tasks. **&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Aynchronous vs Multithreading vs Multiprocessing?
+My Own Analogy(might be wrong):&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Asynchronous: You hire one librarian(“worker”) handling the borrowing and returning of all the books (“tasks”). The working pattern of this librarian is asynchronous. It can pause at certain tasks and wait for response to return and continue working on it.&lt;/p&gt;
+
+&lt;p&gt;Multithread: You hire many librarians working for you. Each librarian can do the work and they all know about the resources in your library when a customer come.&lt;/p&gt;
+
+&lt;p&gt;Multiprocessing: You hire many librarians. Each librarian is responsible for &lt;strong&gt;his own&lt;/strong&gt; section. When a customer come, he can ask certain librarians(not all, as not all of them knows the same thing (not sharing memory) ) for certain books. It still works in paralell but each librarian no longer sits on the same ground(know the same memory infomation)&lt;/p&gt;
+
+&lt;h1 id=&quot;oskernel-wise-concepts&quot;&gt;OS/kernel-wise concepts&lt;/h1&gt;
+
+&lt;p&gt;These concepts are more of a OS/kernel thing rather than programming&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Kernel Space, User Space, Heap, Stack
+see &lt;a href=&quot;https://medium.com/@shoheiyokoyama/understanding-memory-layout-4ef452c2e709&quot;&gt;medium post&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;short answer on stack and heap:&lt;/p&gt;
+
+&lt;p&gt;stack: Storing data needed by function calls in a program, &lt;strong&gt;OS kernel&lt;/strong&gt; handles the memory allocation, scope &lt;strong&gt;limits to function calls&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;heap: Dynamic memory allocation, memory allocation handled by &lt;strong&gt;user&lt;/strong&gt;, scope &lt;strong&gt;not limited&lt;/strong&gt; variables referenced from several places&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/</link>
+        <guid isPermaLink="true">http://localhost:4000//concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/</guid>
+      </item>
+    
+      <item>
         <title>first attempt using jekyll</title>
         <description>&lt;p&gt;First time ever setting up personal blog for showcasing my resume. Also serve as a public “notebook” to let me jot down some random stuff (process of setting up environment, some weird bugs I encountered, some random thoughts, material science jokes etc).&lt;/p&gt;
 
@@ -54,6 +166,17 @@
         <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
         <link>http://localhost:4000//randomstuff/first-attempt-using-jekyll/</link>
         <guid isPermaLink="true">http://localhost:4000//randomstuff/first-attempt-using-jekyll/</guid>
+      </item>
+    
+      <item>
+        <title>Design Pattern Notes</title>
+        <description>&lt;p&gt;Not started yet, plan on first focus on learning about factory, observer, MVC, IoC using actual &lt;strong&gt;code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I find it &lt;strong&gt;extremely useless&lt;/strong&gt; learning design pattern by listening to lectures or by only reading books alone&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//design%20pattern/notes/learning/design-pattern-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000//design%20pattern/notes/learning/design-pattern-notes/</guid>
       </item>
     
   </channel>

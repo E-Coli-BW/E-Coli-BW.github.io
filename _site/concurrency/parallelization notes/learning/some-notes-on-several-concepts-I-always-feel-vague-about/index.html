@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Some Notes on Several Concepts I always feel vague about | Haosong Liu’s Blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Some Notes on Several Concepts I always feel vague about" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Programming-wise concepts" />
+<meta property="og:description" content="Programming-wise concepts" />
+<link rel="canonical" href="http://localhost:4000/concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/" />
+<meta property="og:url" content="http://localhost:4000/concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/" />
+<meta property="og:site_name" content="Haosong Liu’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-17T00:15:07-04:00" />
+<script type="application/ld+json">
+{"headline":"Some Notes on Several Concepts I always feel vague about","dateModified":"2020-07-17T00:15:07-04:00","datePublished":"2020-07-17T00:15:07-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/"},"description":"Programming-wise concepts","url":"http://localhost:4000/concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Haosong Liu's Blog" />
+  
+
+
+
+
+
+
+  
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Haosong Liu&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/resume/">Resume</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Some Notes on Several Concepts I always feel vague about</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-07-17T00:15:07-04:00" itemprop="datePublished">Jul 17, 2020
+      </time></p>
+  </header>
+  
+  <span>[
+    
+      
+      <a href="/tag/concurrency,parallelization"><code class="highligher-rouge"><nobr>concurrency,parallelization</nobr></code>&nbsp;</a>
+    
+      
+      <a href="/tag/notes,"><code class="highligher-rouge"><nobr>notes,</nobr></code>&nbsp;</a>
+    
+      
+      <a href="/tag/learning"><code class="highligher-rouge"><nobr>learning</nobr></code>&nbsp;</a>
+    
+  ]</span>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="programming-wise-concepts">Programming-wise concepts</h1>
+
+<ol>
+  <li>Thread vs Process vs Coroutines</li>
+</ol>
+
+<ul>
+  <li>
+    <p>Coroutine: sequential processing. one task gets executed at any given moment</p>
+  </li>
+  <li>
+    <p>Threads: concurrent processes, multiple threads may be running at any given moment. (Note: single core can also do multithreading via slicing)</p>
+  </li>
+  <li>
+    <p>Process: Both processes and threads are independent sequences of execution. However, thread <strong>shares</strong> memory space, process runs in <strong>seperate</strong> memory spaces</p>
+  </li>
+</ul>
+
+<p><strong>Key difference between Coroutine and Thread</strong>:</p>
+
+<p>Coroutine switches context <strong>cooperatively</strong> meaning the <strong>programmer/programming language/runtime</strong> controls when a switch happens.</p>
+
+<p>Thread swtiches context preemptively, meaning <strong>kernel</strong> is scheduling(controls) the context-switching</p>
+
+<p><strong>Some examples</strong>:</p>
+
+<p>Cotoutine: C# task, Python generator i.e: programmers can control when an object stops running and handle the control to sth else. OS kernels <strong>does not</strong> involve in this context-swithing/scheduling</p>
+
+<p>Thread: Java multi-thread programming API, you can control thread on high level but the actual context-switching is done by the kernel</p>
+
+<p><strong>Why coroutine if we already have thread?</strong></p>
+
+<p>see <a href="https://stackoverflow.com/questions/1934715/difference-between-a-coroutine-and-a-thread">here</a>, short answer: co-routines have less overhead than thread due to the fact that co-routine don’t need kernel scheduler to work.</p>
+
+<p>ref: 
+1) <a href="https://stackoverflow.com/questions/1934715/difference-between-a-coroutine-and-a-thread">StackOverflow: Difference between a coroutine and a thread</a>
+2) <a href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread">StackOverflow: What is the difference between a process and a thread?</a></p>
+
+<ol>
+  <li>Concurrency vs Parallelization</li>
+</ol>
+
+<ul>
+  <li>Concurrency means two or more tasks start, run, and complete in overlapping time periods. It may <strong>NOT necessarily</strong> be running at the same time</li>
+</ul>
+
+<p>e.g: multi-tasking on a single-core</p>
+
+<ul>
+  <li>Parallelization means tasks are really running at the same time</li>
+</ul>
+
+<p>e.g.: multi-tasking on a multi-core(if well programmed so parallelization can actually take place on difference cores)</p>
+
+<p>ref: <a href="https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism">stackoverflow</a></p>
+
+<ol>
+  <li>Some examples of Multi-thread, Multi-process, Coroutines</li>
+</ol>
+
+<ul>
+  <li>multi-thread: Spark</li>
+  <li>multi-process: Hadoop</li>
+  <li>coroutines: C# tasks</li>
+</ul>
+
+<h1 id="some-follow-up-on-previous-section">Some follow up on previous section</h1>
+
+<ol>
+  <li>Coroutine vs Asynchrounous pattern?</li>
+</ol>
+
+<p>Particularly in JavaScript we have callback/Promise/Async Await which all boils down to Asynchrounous programming.</p>
+
+<p>Asynchrounous basically means during the flow of execution, you can pause some of the code block and wait for it to continue running from where it has been left off when a specific event happens(that triggers the callback function to run)</p>
+
+<p>Coroutine is more of a threading thing and **Threading is about workers; asynchrony is about tasks. **</p>
+
+<ol>
+  <li>Aynchronous vs Multithreading vs Multiprocessing?
+My Own Analogy(might be wrong):</li>
+</ol>
+
+<p>Asynchronous: You hire one librarian(“worker”) handling the borrowing and returning of all the books (“tasks”). The working pattern of this librarian is asynchronous. It can pause at certain tasks and wait for response to return and continue working on it.</p>
+
+<p>Multithread: You hire many librarians working for you. Each librarian can do the work and they all know about the resources in your library when a customer come.</p>
+
+<p>Multiprocessing: You hire many librarians. Each librarian is responsible for <strong>his own</strong> section. When a customer come, he can ask certain librarians(not all, as not all of them knows the same thing (not sharing memory) ) for certain books. It still works in paralell but each librarian no longer sits on the same ground(know the same memory infomation)</p>
+
+<h1 id="oskernel-wise-concepts">OS/kernel-wise concepts</h1>
+
+<p>These concepts are more of a OS/kernel thing rather than programming</p>
+
+<ol>
+  <li>Kernel Space, User Space, Heap, Stack
+see <a href="https://medium.com/@shoheiyokoyama/understanding-memory-layout-4ef452c2e709">medium post</a></li>
+</ol>
+
+<p>short answer on stack and heap:</p>
+
+<p>stack: Storing data needed by function calls in a program, <strong>OS kernel</strong> handles the memory allocation, scope <strong>limits to function calls</strong></p>
+
+<p>heap: Dynamic memory allocation, memory allocation handled by <strong>user</strong>, scope <strong>not limited</strong> variables referenced from several places</p>
+
+
+  </div><a class="u-url" href="/concurrency/parallelization%20notes/learning/some-notes-on-several-concepts-I-always-feel-vague-about/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Haosong Liu&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Haosong Liu&#39;s Blog</li><li><a class="u-email" href="mailto:louisliu960115@gmail.com">louisliu960115@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/E-Coli-BW"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">E-Coli-BW</span></a></li><li><a href="https://www.linkedin.com/in/haosong-liu-512bb0126"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">haosong-liu-512bb0126</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>M.S in ECE from U of Miami, B.S. in Material Science from UMN. Classical Music and Software Engineering Lover</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
