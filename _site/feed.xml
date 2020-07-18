@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
-        <link>http://localhost:4000//randomstuff/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000//randomstuff/welcome-to-jekyll/</guid>
+        <link>http://localhost:4000//welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000//welcome-to-jekyll/</guid>
       </item>
     
       <item>
@@ -37,8 +37,8 @@
         <description>&lt;p&gt;This is just a test for displaying user defined categories for posts&lt;/p&gt;
 </description>
         <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
-        <link>http://localhost:4000//functionaltest/test-categories/</link>
-        <guid isPermaLink="true">http://localhost:4000//functionaltest/test-categories/</guid>
+        <link>http://localhost:4000//test-categories/</link>
+        <guid isPermaLink="true">http://localhost:4000//test-categories/</guid>
       </item>
     
       <item>
@@ -52,8 +52,8 @@
 &lt;p&gt;But anyway, I will keep researching about this and try to really master it to make my site a easy to use static blog for myself.&lt;/p&gt;
 </description>
         <pubDate>Fri, 17 Jul 2020 00:15:07 -0400</pubDate>
-        <link>http://localhost:4000//randomstuff/first-attempt-using-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000//randomstuff/first-attempt-using-jekyll/</guid>
+        <link>http://localhost:4000//first-attempt-using-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000//first-attempt-using-jekyll/</guid>
       </item>
     
   </channel>
