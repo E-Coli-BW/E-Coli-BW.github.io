@@ -7,6 +7,161 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Notes on Spark Internals - Part 1</title>
+        <description>&lt;p&gt;&lt;strong&gt;To be done.&lt;/strong&gt; I watched &lt;a href=&quot;https://databricks.com/session/a-deeper-understanding-of-spark-internals&quot;&gt;the talk by Aaron Davidson&lt;/a&gt; and found it very helpful in understanding how spark jobs been executed and how partitions, shuffling really works.&lt;/p&gt;
+
+&lt;p&gt;Need sometimes to digest the content and hopefully can write a summary on my own.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 19 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//spark/notes/spark-internals-part1/</link>
+        <guid isPermaLink="true">http://localhost:4000//spark/notes/spark-internals-part1/</guid>
+      </item>
+    
+      <item>
+        <title>Git common operations</title>
+        <description>&lt;p&gt;I’ve been using Git for a while and apart from the simple “git add .”, “git commit -m “blablabla” “ and “git push”, sometime I do need some other commands aside from these most common ones. Usually I would just google it and copy paste it. However, I found myself doing the same thing quite a lot recently and reckon I do need a deeper understanding on git-related concepts. That’s the motivation of this post.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Centralized Version Control vs Distributed Version control&lt;/p&gt;
+
+    &lt;p&gt;Git is distribured version control, by distributed, we mean each collaborator has its own repo, whereas in centralized vc, you only have one grand repo.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/gitConcepts/centralized-vc.png&quot; alt=&quot;central&quot; /&gt;
+ &lt;img src=&quot;/assets/gitConcepts/distributed-vc.png&quot; alt=&quot;distributed&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;fork vs clone&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;To fork is to make a copy of the original repo to your own &lt;strong&gt;repo&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;To clone is to make a copy of the repo(does not matter if it’s your forked one or an original one of yours/others) to your &lt;strong&gt;local machine&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/gitConcepts/fork.png&quot; alt=&quot;fork&quot; /&gt;
+ &lt;img src=&quot;/assets/gitConcepts/clone.png&quot; alt=&quot;clone&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;upstream vs origin&lt;/p&gt;
+
+    &lt;p&gt;These two are actually just naming conventions for different &lt;strong&gt;remotes&lt;/strong&gt;. A remote is just the repo sitting on Github &lt;strong&gt;server&lt;/strong&gt;, not the &lt;strong&gt;local&lt;/strong&gt; files you have in your laptop.&lt;/p&gt;
+
+    &lt;p&gt;Now, what’s the difference between these two default &lt;strong&gt;remote&lt;/strong&gt;?&lt;/p&gt;
+
+    &lt;p&gt;upstream: the &lt;strong&gt;original&lt;/strong&gt; repo
+ origin: the &lt;strong&gt;forked&lt;/strong&gt; repo you are working on&lt;/p&gt;
+
+    &lt;p&gt;Now, what if you are the owner and you did not fork anything?
+ Then that repo is both the origin(your own fork) &lt;strong&gt;and&lt;/strong&gt; the upstream(your own original repo)
+ &lt;img src=&quot;/assets/gitConcepts/upstreams_and_origin.png&quot; alt=&quot;upstreams and origin&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;side note&lt;/strong&gt;: when you do git fetch, you are fetching from origin(your own repo) by default. To fetch the &lt;strong&gt;original&lt;/strong&gt; repo, you need to do git fetch upstream.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;pull, fetch and merge&lt;/p&gt;
+
+    &lt;p&gt;In short:&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;pull = fetch + merge&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;merge: as the name suggests, try to combine the two into one, you can think of it as doing a union set operation where it would combine the things in the two repo. However, if in set A and set B they both have a chunk that has the same name but different contents -&amp;gt; conflict!&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;fetch: simply means get sth. from the specified destination, not doing the combine stuff&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Now, when you do pull, it’s basically saying: I’m gonna fetch the remote you specified, then do a merge with your local files.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How to undo git pull?&lt;/p&gt;
+
+    &lt;p&gt;Every now and then, I find myself messed up with the local branch and pulled from the remote but later found out I still prefer the local one. To reset after I wrongly pulled from origin, do&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;git reset –hard HEAD@{1}&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;This will discard the result of the git pull I did previously.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;pull request&lt;/p&gt;
+
+    &lt;p&gt;You can push the changes directly into your own repo of course, or if you have the right to push to upstream you can also push directly into upstream. However, a better and safer approach would be send a pull request to the upstream and wait for them to review and approve(ie merge) the changes you made.&lt;/p&gt;
+
+    &lt;p&gt;The above explaination also explains why it is called “pull request” : You &lt;strong&gt;request&lt;/strong&gt; the repo you wish to make changes into to &lt;strong&gt;pull&lt;/strong&gt; your stuff and thus making that change.(merging your changes)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;rebase vs reset&lt;/p&gt;
+
+    &lt;p&gt;In part 5 above, we undo a pull by resetting the head to the previous commit.
+ according to &lt;a href=&quot;https://git-scm.com/docs/git-reset&quot;&gt;official doc&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;git-reset - Reset current HEAD to the specified state&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;from the doc, we see that reset works with &lt;strong&gt;references&lt;/strong&gt;, that means, your commit history(and thus the objects relate to commit is &lt;strong&gt;unchanged&lt;/strong&gt;).&lt;/p&gt;
+
+    &lt;p&gt;Now take a look at rebase:&lt;/p&gt;
+
+    &lt;p&gt;according to &lt;a href=&quot;https://git-scm.com/docs/git-rebase&quot;&gt;official doc&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;git-rebase - Reapply commits on top of another base tip&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;from the doc, rebase is &lt;strong&gt;actually changing the commit history&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;in short&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;git reset –hard {commit-id}: uses a commit in local history&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;git rebase origin/{branch-name}: uses latest commit in the branch(repo)&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;strong&gt;when to use reset?&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;You work on local branch and you messsed up sth but you mistakenly &lt;strong&gt;commit&lt;/strong&gt; that -&amp;gt; use &lt;strong&gt;reset&lt;/strong&gt;(reusing a local commit)&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;when to use rebase?&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;You simply wish to use the commit your colleauge pushed to the origin(upstream) and &lt;strong&gt;discard your own work&lt;/strong&gt; -&amp;gt; use rebase which will &lt;strong&gt;base&lt;/strong&gt; your colleague’s work(the commit you chose) &lt;strong&gt;on top of your current commit&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;note&lt;/strong&gt;: both reset and rebase &lt;strong&gt;will delete local changes&lt;/strong&gt;, so be careful about it&lt;/p&gt;
+
+    &lt;p&gt;Personally, I only use rebase when I definitely wish to replace the messy local files with the good old remote branch, and use reset when I have a good old commit of &lt;strong&gt;my own&lt;/strong&gt; and I need that commit back.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;refs:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-vs-git-rebase&quot;&gt;pull,fetch vs rebase&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thepilcrow.net/explaining-basic-concepts-git-and-github/&quot;&gt;git basic concept&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github&quot;&gt;origin vs upstream&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/14961255/how-does-git-merge-work-in-details&quot;&gt;how git merge works&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3419658/understanding-git-fetch-then-merge&quot;&gt;what it means when you fetch and merge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase#:~:text=What%20is%20git%20rebase%3F&amp;amp;text=From%20a%20content%20perspective%2C%20rebasing,them%20to%20the%20specified%20base.&quot;&gt;git rebasing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/11225293/what-is-the-difference-between-git-reset-vs-git-rebase&quot;&gt;rebase vs reset&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sun, 19 Jul 2020 00:15:07 -0400</pubDate>
+        <link>http://localhost:4000//git/notes/git-common-operations/</link>
+        <guid isPermaLink="true">http://localhost:4000//git/notes/git-common-operations/</guid>
+      </item>
+    
+      <item>
         <title>Welcome to Jekyll!</title>
         <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
