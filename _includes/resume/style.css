@@ -19,20 +19,20 @@ p {
 	font-size: 1em;
 	line-height: 1.4em;
 	margin-bottom: 20px;
-	color: #444;
+	color: white;
 }
 
 #cv {
 	width: 90%;
 	max-width: 800px;
-	background: #f3f3f3;
+	background: whitesmoke;
 	margin: 30px auto;
 }
 
 .mainDetails {
 	padding: 25px 35px;
 	border-bottom: 2px solid #cf8a05;
-	background: #ededed;
+	background: white;
 }
 
 #name h1 {
@@ -81,11 +81,11 @@ p {
 
 #contactDetails ul li {
 	margin-bottom: 3px;
-	color: #444;
+	color: white;
 }
 
 #contactDetails ul li a, a[href^=tel] {
-	color: #444; 
+	color: white;
 	text-decoration: none;
 	-webkit-transition: all .3s ease-in;
 	-moz-transition: all .3s ease-in;
